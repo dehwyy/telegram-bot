@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 7272:7272
+    container_name: telegram-bot-runtime
+    env_file:
+      - .env
+    # volumes:
+    #   - ./data:/data
