@@ -1,8 +1,15 @@
 package routes
 
+import (
+	"github.com/dehwyy/telegram-bot/pkg/logger"
+	"github.com/dehwyy/telegram-bot/pkg/state"
+	tg "gopkg.in/telebot.v4"
+)
+
 // Routes with description
 
 type Route string
+type RouteHandler func(tg.Context, *state.State, *logger.Logger) error
 
 func (r Route) String() string { return string(r) }
 

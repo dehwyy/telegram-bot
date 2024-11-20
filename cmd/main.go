@@ -7,10 +7,12 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/dehwyy/telegram-bot/pkg/db"
 	"github.com/dehwyy/telegram-bot/pkg/handlers"
 	"github.com/dehwyy/telegram-bot/pkg/handlers/routes"
 	"github.com/dehwyy/telegram-bot/pkg/logger"
 	"github.com/dehwyy/telegram-bot/pkg/runtime"
+	"github.com/dehwyy/telegram-bot/pkg/state"
 	tg "gopkg.in/telebot.v4"
 )
 
@@ -44,9 +46,13 @@ func main() {
 	}
 	b.SetCommands(botCommands)
 
+	// Initialize state & db.
+	db := db.NewDatabase()
+	state := state.NewState(db)
+
 	// Register handlers.
-	handlers.NewDefaultHandler(b.Group())
-	handlers.NewAdminHandler(b.Group())
+	handlers.NewDefaultHandler(b.Group(), state, &l)
+	// handlers.NewAdminHandler(b.Group(), state, l)
 
 	l.Info().Msg("Starting bot...")
 	go b.Start()

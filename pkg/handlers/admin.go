@@ -1,20 +1,18 @@
 package handlers
 
-import (
-	"github.com/dehwyy/telegram-bot/pkg/handlers/routes"
-	tg "gopkg.in/telebot.v4"
-)
+// import (
+// 	"github.com/dehwyy/telegram-bot/pkg/handlers/routes"
+// 	"github.com/dehwyy/telegram-bot/pkg/state"
+// 	tg "gopkg.in/telebot.v4"
+// )
 
-func NewAdminHandler(group *tg.Group) {
-	handledRoutes := []handledRoute{
-		{routes.RouteAdminStart, adminHandleStart},
-	}
+// func NewAdminHandler(group *tg.Group, state *state.State) {
+// 	g := routes.NewGroup(group)
+// 	g.Add(routes.RouteAdminStart, adminHandleStart)
 
-	for _, r := range handledRoutes {
-		group.Handle(r.route.String(), r.h)
-	}
-}
+// 	g.Handle(state)
+// }
 
-func adminHandleStart(ctx tg.Context) error {
-	return ctx.Send("admin message")
-}
+// func adminHandleStart(ctx tg.Context, state *state.State) error {
+// 	return ctx.Send("admin message")
+// }
