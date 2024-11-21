@@ -52,6 +52,7 @@ func main() {
 
 	// Register handlers.
 	handlers.NewDefaultHandler(b.Group(), state, &l)
+	handlers.NewOperatorHandler(b.Group(), state, &l)
 	// handlers.NewAdminHandler(b.Group(), state, l)
 
 	l.Info().Msg("Starting bot...")

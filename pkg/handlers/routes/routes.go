@@ -22,7 +22,8 @@ const (
 )
 
 const (
-	RouteOperatorStart Route = "/operator"
+	RouteOperatorStart    Route = "/operator"
+	RouteOperatorAddOrder Route = "add_order"
 )
 
 const (
